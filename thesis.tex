@@ -1,0 +1,69 @@
+%% =====================================================================
+%%  Boston University -- General Thesis Template (LaTeX version)
+%%  Port of "GeneralThesisTemplateJuly2026.docx"
+%%
+%%  Build:   latexmk -pdf thesis.tex
+%%     or:   pdflatex thesis ; bibtex thesis ; pdflatex thesis ; pdflatex thesis
+%%
+%%  Class options:
+%%     notes    (default) show the template's italic instruction notes
+%%     nonotes  hide every \templatenote{...} -- use for the final PDF
+%% =====================================================================
+\documentclass[notes]{buthesis}
+
+% ---------------------------------------------------------------------
+%  Your information
+% ---------------------------------------------------------------------
+\school{YOUR FULL SCHOOL/COLLEGE NAME HERE}
+\doctype{Thesis}
+% Title page: all capitals, bold, centered. Break lines with \\
+\title{THE TITLE OF THE MASTER'S THESIS IN ALL\\
+       CAPITAL LETTERS BOLD AND CENTERED}
+% Abstract page title (may be broken differently)
+\abstracttitle{THE TITLE OF THE MASTER'S THESIS\\
+               IN ALL CAPITAL LETTERS BOLD\\
+               AND CENTERED}
+\author{YOUR NAME IN ALL CAPITALS BOLD AND CENTERED}   % title page
+\authorfull{YOUR FULL NAME}                           % copyright page
+\priordegrees{B.A., University of Jupiter, 2000}      % use \\ for several
+\degree{Master of \rule{0.65in}{0.4pt}}
+\degreeyear{202X}
+
+\begin{document}
+
+% ------------------------- Preliminary pages -------------------------
+\prelims                                  % roman numerals, footer
+\maketitlepage                            % i   (no number shown)
+\makecopyrightpage                        % ii  (no number shown)
+\input{frontmatter/approval}              % iii (no number shown)
+\input{frontmatter/epigraph}              % iv  -- delete if not needed
+\input{frontmatter/dedication}            % optional
+\input{frontmatter/acknowledgments}       % optional
+\input{frontmatter/abstract}              % required
+\input{frontmatter/preface}               % optional
+\tableofcontents                          % required
+\input{frontmatter/lists}                 % tables / figures / illustrations
+\input{frontmatter/abbreviations}         % optional
+\input{frontmatter/glossary}              % optional
+
+% ---------------------------- Main text ------------------------------
+\mainbody                                 % arabic numerals, header
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+
+% ---------------------------- Back matter ----------------------------
+\backmatter
+\input{backmatter/appendix}               % appendices BEFORE bibliography
+
+% Bibliography. plainnat = alphabetical by author;
+% use unsrtnat (and \usepackage[numbers]{natbib} options) for numbered,
+% order-of-appearance citations.
+\nocite{*}                                % remove once you cite for real
+\bibliographystyle{plainnat}
+\bibliography{references}
+\input{backmatter/bibliography-notes}
+
+\input{backmatter/cv}                     % required
+
+\end{document}
