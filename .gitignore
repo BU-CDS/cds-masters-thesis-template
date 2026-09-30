@@ -11,3 +11,8 @@
 *.bbl
 *.blg
 *.loi
+
+# python
+__pycache__/
+.pytest_cache/
+.venv/
