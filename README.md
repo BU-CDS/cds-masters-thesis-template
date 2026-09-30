@@ -1,4 +1,4 @@
-# BU General Thesis Template — LaTeX version
+# CDS Masters Thesis Template — LaTeX version
 
 A LaTeX port of Boston University's *General Thesis Template* (Word, July 2026).
 It reproduces the Word template's layout: page geometry, fonts, spacing, headings,
