@@ -1,0 +1,43 @@
+# Builds thesis.tex and checks the PDF against the thesis formatting rules.
+# This file comes with every repository created from the template, so it
+# checks each student's own thesis in their own repository.
+name: Check thesis formatting
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      # The template itself still contains sample text and instruction notes.
+      SKIP_RULES: ${{ github.repository == 'BU-CDS/cds-thesis-template' && 'placeholders,template-notes' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-fonts-extra
+
+      - name: Build thesis
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error thesis.tex
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: thesis.pdf
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install checker
+        run: pip install ./checker
+
+      - name: Check formatting
+        run: buthesis-check thesis.pdf --skip "$SKIP_RULES"

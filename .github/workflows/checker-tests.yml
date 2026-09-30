@@ -1,0 +1,32 @@
+# Tests the formatting checker against the template itself.
+# Runs only in the template repository; repositories created from the
+# template use check-thesis.yml instead.
+name: Checker tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    if: github.repository == 'BU-CDS/cds-thesis-template'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-fonts-extra
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install checker
+        run: pip install "./checker[test]"
+
+      - name: Run tests
+        run: pytest checker/tests -v
