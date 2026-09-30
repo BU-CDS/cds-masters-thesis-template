@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    if: github.repository == 'BU-CDS/cds-thesis-template'
+    if: github.repository == 'BU-CDS/cds-masters-thesis-template'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

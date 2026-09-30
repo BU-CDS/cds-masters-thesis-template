@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # The template itself still contains sample text and instruction notes.
-      SKIP_RULES: ${{ github.repository == 'BU-CDS/cds-thesis-template' && 'placeholders,template-notes' || '' }}
+      SKIP_RULES: ${{ github.repository == 'BU-CDS/cds-masters-thesis-template' && 'placeholders,template-notes' || '' }}
     steps:
       - uses: actions/checkout@v4
 
