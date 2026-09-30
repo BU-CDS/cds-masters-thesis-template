@@ -11,3 +11,8 @@
 *.bbl
 *.blg
 *.loi
+
+# python
+__pycache__/
+*.egg-info/
+.pytest_cache/

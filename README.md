@@ -23,6 +23,22 @@ Works on Overleaf. Upload the folder (or the zip) and set `thesis.tex` as the ma
 | `chapters/` | One file per chapter |
 | `backmatter/` | Appendix, notes shown after the bibliography, and curriculum vitae |
 | `references.bib` | Your bibliography entries. The three sample entries are placeholders |
+| `checker/` | `buthesis-check`, which checks the finished PDF against the formatting rules |
+
+## Checking your formatting
+
+`buthesis-check` reads your finished PDF and reports anything that breaks the
+formatting rules: page size, margins, page numbering, fonts, the order of the
+required pages, and leftover template text or instruction notes.
+
+```
+pip install ./checker
+buthesis-check thesis.pdf
+```
+
+If your thesis is in a GitHub repository created from this template, the
+*Check thesis formatting* workflow builds and checks it on every push. See
+[`checker/README.md`](checker/README.md) for the full list of rules.
 
 ## Formatting reproduced from the Word template
 
