@@ -22,7 +22,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             latexmk texlive-latex-recommended texlive-latex-extra \
-            texlive-fonts-recommended texlive-fonts-extra
+            texlive-fonts-recommended texlive-fonts-extra texlive-plain-generic
 
       - name: Build thesis
         run: latexmk -pdf -interaction=nonstopmode -halt-on-error thesis.tex
